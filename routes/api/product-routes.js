@@ -32,9 +32,14 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 
   try {
-    const allProducts = await Product.findByPk({
+    const allProducts = await Product.findOne({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id', 'product_name', 'price', 'stock'],
+      
       include: [{ 
-        model: Product,
+        model: Category,
         attributes: ['id', 'category_name']
       },
       {
