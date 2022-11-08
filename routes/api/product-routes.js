@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
 
 // Get Product by its ID #
 router.get('/:id', async (req, res) => {
+
   try {
     const allProducts = await Product.findByPk({
       include: [{ 
@@ -40,6 +41,11 @@ router.get('/:id', async (req, res) => {
         attributes: ['id', 'tag_name']
       }]
     })
+
+    if (!allProducts) {
+      res.status(404).json({ message: 'Not a valid id...' });
+      return;
+    }
 
     res.status(200).json(allProducts);
 
@@ -124,8 +130,27 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+// Delete Product by its ID #
+router.delete('/:id', async (req, res) => {
+
+  try {
+    const allProducts= await Product.destroy
+      ({
+        where: {
+          id: req.params.id
+        },
+      })
+
+    if (!allProducts) {
+      res.status(404).json({ message: 'Not a valid id...' });
+      return;
+    }
+
+    res.status(200).json(allProducts);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
