@@ -58,8 +58,26 @@ router.post('/', async (req, res) => {
    }
 });
 
-router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+router.put('/:id', async (req, res) => {
+   
+  try {
+     const allCategories = await Category.update(req.body, 
+      { 
+        where: {
+          id: req.params.id
+        },
+      })
+
+      if (!allCategories) {
+        res.status(404).json({ message: 'Not a valid id...'});
+        return;
+      }
+
+      res.status(200).json(allCategories);
+
+  } catch(err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', (req, res) => {
