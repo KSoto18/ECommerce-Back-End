@@ -22,10 +22,17 @@ router.get('/', async (req, res) => {
 
 // Get Category by its ID #
 router.get('/:id', async (req, res) => {
-
+  
   try {
-    const allCategories = await Category.findByPk({
-      include: [{ model: Product }]
+    const allCategories = await Category.findOne({
+      where: {
+        id: req.params.id
+      },
+
+      include: [{
+        model: Product,
+        attributes: ['id', 'product_name', 'price', 'stock'],
+      }]
     })
 
     if (!allCategories) {
