@@ -68,10 +68,10 @@ To use the application do the following:
  ## Sources
   
   - [Node.js 16.18.0 LTS](https://nodejs.org/en/)
-  - [Express]()
-  - [Sequelize]()
-  - [Dotenv]()
-  - [MySQL2]()
+  - [Express](https://www.npmjs.com/package/express)
+  - [Sequelize](https://www.npmjs.com/package/sequelize)
+  - [Dotenv](https://www.npmjs.com/package/dotenv)
+  - [MySQL2](https://www.npmjs.com/package/mysql)
 
 
  ## License
