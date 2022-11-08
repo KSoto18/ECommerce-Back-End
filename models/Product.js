@@ -15,6 +15,12 @@ Product.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    product_name:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    
+
   },
   {
     sequelize,
