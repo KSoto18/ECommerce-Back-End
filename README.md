@@ -11,7 +11,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Demo](#demo)
-* [Links] (#links)
+* [Links](#links)
 * [Sources](#sources)
 * [License](#license)
 * [Contact](#contact)
@@ -36,10 +36,11 @@ To use the application do the following:
  2. To start the application used the command 'node server.js'.
  3. Use a client like [Insomnia](https://insomnia.rest/) or your browser using http://localhost:3001 to test the routes.
 
+<br>
  ROUTES:
- /categories
- /products
- /tags
+ <br> /categories 
+ <br> /products
+ <br> /tags
 
 
 <br>
@@ -49,19 +50,19 @@ To use the application do the following:
  ### Demonstration
 <br>
 
-  ![Screenshot]()
+  ![Screenshot](./assets/Screenshot%201.jpg)
 <br>
 
 ### Demonstration 
 <br>
  
-  ![Screenshot]())
+  ![Screenshot](./assets/Screenshot%202.jpg)
 
 <br><br>
 
  ## Links
 
-  - [Repository]()
+  - [Repository](https://github.com/KSoto18/ECommerce-Back-End)
   - [Video of Application]()
 
  ## Sources
