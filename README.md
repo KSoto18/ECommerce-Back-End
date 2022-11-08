@@ -63,7 +63,7 @@ To use the application do the following:
  ## Links
 
   - [Repository](https://github.com/KSoto18/ECommerce-Back-End)
-  - [Video of Application]()
+  - [Video of Application](https://drive.google.com/file/d/1aI0gYORg2IqdqZeDe_dkqHGkfUpCt-pJ/view)
 
  ## Sources
   
