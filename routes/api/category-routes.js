@@ -5,83 +5,101 @@ const { Category, Product } = require('../../models');
 
 router.get('/', async (req, res) => {
 
-    try {
-      const allCategories = await Category.findAll({
-        include: [{ model: Product }]
-      })
+  try {
+    const allCategories = await Category.findAll({
+      include: [{ model: Product }]
+    })
 
-      res.status(200).json(allCategories);
+    res.status(200).json(allCategories);
 
-    }catch(err) {
-      console.info(err);
-      res.status(500).json(err);
-    }
-  
+  } catch (err) {
+    console.info(err);
+    res.status(500).json(err);
+  }
+
 });
+
 
 router.get('/:id', async (req, res) => {
 
-   try {
-      const allCategories = await Category.findAll({
-        include: [{ model: Product,
-                    attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
-                 }]
-      })
-      
-      if (!allCategories) {
-        res.status(404).json({ message: 'Input a valid ID...'});
-        return;
-      }
+  try {
+    const allCategories = await Category.findAll({
+      include: [{ model: Product }]
+    })
 
-      res.status(200).json(allCategories);
-
-    }catch(err) {
-      console.info(err);
-      res.status(500).json(err);
+    if (!allCategories) {
+      res.status(404).json({ message: 'Input a valid ID...' });
+      return;
     }
-  
+
+    res.status(200).json(allCategories);
+
+  } catch (err) {
+    console.info(err);
+    res.status(500).json(err);
+  }
+
 });
 
 
 router.post('/', async (req, res) => {
-  
-   try {
-     const allCategories = await Category.create({
-       category_name: req.body.category_name
-     })
 
-     res.status(200).json(allCategories);
+  try {
+    const allCategories = await Category.create({
+      category_name: req.body.category_name
+    })
 
-   } catch(err) {
-     console.info(err);
-     res.status(500),json(err);
-   }
+    res.status(200).json(allCategories);
+
+  } catch (err) {
+    console.info(err);
+    res.status(500), json(err);
+  }
 });
 
 router.put('/:id', async (req, res) => {
-   
+
   try {
-     const allCategories = await Category.update(req.body, 
-      { 
+    const allCategories = await Category.update(req.body,
+      {
         where: {
           id: req.params.id
         },
       })
 
-      if (!allCategories) {
-        res.status(404).json({ message: 'Not a valid id...'});
-        return;
-      }
+    if (!allCategories) {
+      res.status(404).json({ message: 'Not a valid id...' });
+      return;
+    }
 
-      res.status(200).json(allCategories);
+    res.status(200).json(allCategories);
 
-  } catch(err) {
+  } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
+router.delete('/:id', async (req, res) => {
+
+  try {
+    const allCategories = await Category.destroy
+     ({
+        where: {
+          id: req.params.id
+        },
+      })
+
+    if (!allCategories) {
+      res.status(404).json({ message: 'Not a valid id...' });
+      return;
+    }
+
+    res.status(200).json(allCategories);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
 
 module.exports = router;
